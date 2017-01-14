@@ -30,6 +30,9 @@
 		57D8A73A1E29F07200CC120E /* RedditAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7391E29F07200CC120E /* RedditAPI.swift */; };
 		57D8A73C1E29F1F900CC120E /* RedditAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A73B1E29F1F900CC120E /* RedditAccessToken.swift */; };
 		57D8A7401E2A1E5500CC120E /* AccessTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A73F1E2A1E5500CC120E /* AccessTokenRequest.swift */; };
+		57D8A7431E2A24ED00CC120E /* InitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7421E2A24ED00CC120E /* InitialViewModel.swift */; };
+		57D8A7451E2A5CF500CC120E /* RedditAuthorization+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7441E2A5CF500CC120E /* RedditAuthorization+Rx.swift */; };
+		57D8A7471E2A7B1300CC120E /* RedditService+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7461E2A7B1300CC120E /* RedditService+Rx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,9 @@
 		57D8A7391E29F07200CC120E /* RedditAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditAPI.swift; sourceTree = "<group>"; };
 		57D8A73B1E29F1F900CC120E /* RedditAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditAccessToken.swift; sourceTree = "<group>"; };
 		57D8A73F1E2A1E5500CC120E /* AccessTokenRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenRequest.swift; sourceTree = "<group>"; };
+		57D8A7421E2A24ED00CC120E /* InitialViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewModel.swift; sourceTree = "<group>"; };
+		57D8A7441E2A5CF500CC120E /* RedditAuthorization+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RedditAuthorization+Rx.swift"; sourceTree = "<group>"; };
+		57D8A7461E2A7B1300CC120E /* RedditService+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RedditService+Rx.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +127,7 @@
 			children = (
 				57D8A71B1E27C93200CC120E /* Reddit */,
 				57D8A71A1E27C87300CC120E /* ViewController */,
+				57D8A7411E2A24CC00CC120E /* ViewModel */,
 				57D8A6F71E2681A000CC120E /* AppDelegate.swift */,
 				57D8A6F91E2681A000CC120E /* FirstViewController.swift */,
 				57D8A6FB1E2681A000CC120E /* SecondViewController.swift */,
@@ -155,7 +162,9 @@
 				57D8A71C1E27C97B00CC120E /* Request */,
 				57D8A7231E27D1BC00CC120E /* RedditServiceConfiguration.swift */,
 				57D8A71D1E27C99400CC120E /* RedditService.swift */,
+				57D8A7461E2A7B1300CC120E /* RedditService+Rx.swift */,
 				57D8A7251E290DDB00CC120E /* RedditAuthorization.swift */,
+				57D8A7441E2A5CF500CC120E /* RedditAuthorization+Rx.swift */,
 				57D8A71F1E27CACD00CC120E /* RedditUser.swift */,
 			);
 			path = Reddit;
@@ -184,6 +193,14 @@
 				57D8A72F1E29E19800CC120E /* RxCocoa.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		57D8A7411E2A24CC00CC120E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				57D8A7421E2A24ED00CC120E /* InitialViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,7 +331,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				57D8A7201E27CACE00CC120E /* RedditUser.swift in Sources */,
+				57D8A7451E2A5CF500CC120E /* RedditAuthorization+Rx.swift in Sources */,
 				57D8A7261E290DDB00CC120E /* RedditAuthorization.swift in Sources */,
+				57D8A7471E2A7B1300CC120E /* RedditService+Rx.swift in Sources */,
 				57D8A73C1E29F1F900CC120E /* RedditAccessToken.swift in Sources */,
 				57D8A7401E2A1E5500CC120E /* AccessTokenRequest.swift in Sources */,
 				57D8A6FC1E2681A000CC120E /* SecondViewController.swift in Sources */,
@@ -324,6 +343,7 @@
 				57D8A7381E29F06200CC120E /* RedditAPIRequest.swift in Sources */,
 				57D8A6FA1E2681A000CC120E /* FirstViewController.swift in Sources */,
 				57D8A73A1E29F07200CC120E /* RedditAPI.swift in Sources */,
+				57D8A7431E2A24ED00CC120E /* InitialViewModel.swift in Sources */,
 				57D8A71E1E27C99400CC120E /* RedditService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

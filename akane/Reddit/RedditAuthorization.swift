@@ -1,21 +1,22 @@
 import Foundation
 import SafariServices
 import APIKit
+import Result
 
 class RedditAuthorization {
-    enum AuthorizationError {
+    enum AuthorizationError: Error {
         case invalidCallbackURL(URL)
         case failedToRequest(String)
         case stateMismatch
         case failedToRetrieveRefreshToken(Error)
     }
 
-    typealias CompletionBlock = ((AuthorizationError?) -> Void)
-    private static let privateShared = RedditAuthorization(clientID: RedditServiceConfiguration.clientID,
-                                                           redirectURI: "akane://oauth-callback",
-                                                           scope: [
-                                                            "read",
-                                                           ])
+    typealias CompletionBlock = ((Result<RedditAccessToken, AuthorizationError>) -> Void)
+    static let shared = RedditAuthorization(clientID: RedditServiceConfiguration.clientID,
+                                            redirectURI: "akane://oauth-callback",
+                                            scope: [
+                                                "read",
+                                            ])
     let clientID: String
     let redirectURI: String
     let scope: [String]
@@ -53,42 +54,37 @@ class RedditAuthorization {
         return state
     }
 
-    static func authorize(from viewController: UIViewController, completion: @escaping CompletionBlock) {
-        privateShared.authorize(from: viewController, completion: completion)
-    }
-
-    static func handle(url: URL) {
-        privateShared.handle(url: url)
-    }
-
-    func authorize(from viewController: UIViewController, completion: @escaping CompletionBlock) {
+    func authorize(completion: @escaping CompletionBlock) {
         completionBlock = completion
 
         let safariViewController = SFSafariViewController(url: authorizeURL)
         currentWebViewController = safariViewController
 
+        guard let viewController = UIApplication.shared.delegate?.window??.rootViewController else {
+            fatalError("Cannot present web view controller")
+        }
         viewController.present(safariViewController, animated: true, completion: nil)
     }
 
     func handle(url: URL) {
         let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
         guard let queryItems = urlComponents.queryItems else {
-            completionBlock?(.invalidCallbackURL(url))
+            completionBlock?(.failure(.invalidCallbackURL(url)))
             return
         }
 
         if let error = queryItems.first(where: { $0.name == "error" })?.value {
-            completionBlock?(.failedToRequest(error))
+            completionBlock?(.failure(.failedToRequest(error)))
             return
         }
 
         guard let state = queryItems.first(where: { $0.name == "state" })?.value, state == recentState else {
-            completionBlock?(.stateMismatch)
+            completionBlock?(.failure(.stateMismatch))
             return
         }
 
         guard let code = queryItems.first(where: { $0.name == "code" })?.value else {
-            completionBlock?(.invalidCallbackURL(url))
+            completionBlock?(.failure(.invalidCallbackURL(url)))
             return
         }
 
@@ -96,14 +92,17 @@ class RedditAuthorization {
         Session.send(request) { result in
             switch result {
             case .success(let accessToken):
-                print(accessToken)
-
                 self.currentWebViewController?.dismiss(animated: true) {
-                    self.completionBlock?(nil)
+                    self.completionBlock?(.success(accessToken))
+                    self.completionBlock = nil
                 }
             case .failure(let error):
-                self.completionBlock?(.failedToRetrieveRefreshToken(error))
+                self.currentWebViewController?.dismiss(animated: true) {
+                    self.completionBlock?(.failure(.failedToRetrieveRefreshToken(error)))
+                    self.completionBlock = nil
+                }
             }
+            self.currentWebViewController = nil
         }
     }
 }
