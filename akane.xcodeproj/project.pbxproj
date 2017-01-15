@@ -32,8 +32,9 @@
 		57D8A7401E2A1E5500CC120E /* AccessTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A73F1E2A1E5500CC120E /* AccessTokenRequest.swift */; };
 		57D8A7431E2A24ED00CC120E /* InitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7421E2A24ED00CC120E /* InitialViewModel.swift */; };
 		57D8A7451E2A5CF500CC120E /* RedditAuthorization+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7441E2A5CF500CC120E /* RedditAuthorization+Rx.swift */; };
-		57D8A7471E2A7B1300CC120E /* RedditService+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7461E2A7B1300CC120E /* RedditService+Rx.swift */; };
 		57D8A7491E2B113C00CC120E /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7481E2B113C00CC120E /* UserRequest.swift */; };
+		57D8A74B1E2B2F3D00CC120E /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D8A74A1E2B2F3D00CC120E /* KeychainAccess.framework */; };
+		57D8A74D1E2B309B00CC120E /* Session+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A74C1E2B309B00CC120E /* Session+Rx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,8 +77,9 @@
 		57D8A73F1E2A1E5500CC120E /* AccessTokenRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenRequest.swift; sourceTree = "<group>"; };
 		57D8A7421E2A24ED00CC120E /* InitialViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewModel.swift; sourceTree = "<group>"; };
 		57D8A7441E2A5CF500CC120E /* RedditAuthorization+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RedditAuthorization+Rx.swift"; sourceTree = "<group>"; };
-		57D8A7461E2A7B1300CC120E /* RedditService+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RedditService+Rx.swift"; sourceTree = "<group>"; };
 		57D8A7481E2B113C00CC120E /* UserRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
+		57D8A74A1E2B2F3D00CC120E /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
+		57D8A74C1E2B309B00CC120E /* Session+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+Rx.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57D8A74B1E2B2F3D00CC120E /* KeychainAccess.framework in Frameworks */,
 				57D8A7301E29E19800CC120E /* APIKit.framework in Frameworks */,
 				57D8A7311E29E19800CC120E /* Result.framework in Frameworks */,
 				57D8A7321E29E19800CC120E /* Kingfisher.framework in Frameworks */,
@@ -133,6 +136,7 @@
 				57D8A6F71E2681A000CC120E /* AppDelegate.swift */,
 				57D8A6F91E2681A000CC120E /* FirstViewController.swift */,
 				57D8A6FB1E2681A000CC120E /* SecondViewController.swift */,
+				57D8A74C1E2B309B00CC120E /* Session+Rx.swift */,
 				57D8A6FD1E2681A000CC120E /* Main.storyboard */,
 				57D8A7001E2681A000CC120E /* Assets.xcassets */,
 				57D8A7021E2681A000CC120E /* LaunchScreen.storyboard */,
@@ -164,7 +168,6 @@
 				57D8A71C1E27C97B00CC120E /* Request */,
 				57D8A7231E27D1BC00CC120E /* RedditServiceConfiguration.swift */,
 				57D8A71D1E27C99400CC120E /* RedditService.swift */,
-				57D8A7461E2A7B1300CC120E /* RedditService+Rx.swift */,
 				57D8A7251E290DDB00CC120E /* RedditAuthorization.swift */,
 				57D8A7441E2A5CF500CC120E /* RedditAuthorization+Rx.swift */,
 				57D8A71F1E27CACD00CC120E /* RedditUser.swift */,
@@ -187,6 +190,7 @@
 		57D8A7281E29E16C00CC120E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				57D8A74A1E2B2F3D00CC120E /* KeychainAccess.framework */,
 				57D8A7291E29E19800CC120E /* APIKit.framework */,
 				57D8A72A1E29E19800CC120E /* Result.framework */,
 				57D8A72B1E29E19800CC120E /* Kingfisher.framework */,
@@ -216,7 +220,7 @@
 				57D8A6F01E2681A000CC120E /* Sources */,
 				57D8A6F11E2681A000CC120E /* Frameworks */,
 				57D8A6F21E2681A000CC120E /* Resources */,
-				57D8A7271E29E09300CC120E /* ShellScript */,
+				57D8A7271E29E09300CC120E /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -306,7 +310,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		57D8A7271E29E09300CC120E /* ShellScript */ = {
+		57D8A7271E29E09300CC120E /* Copy Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -319,7 +323,9 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 			);
+			name = "Copy Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,8 +342,8 @@
 				57D8A7201E27CACE00CC120E /* RedditUser.swift in Sources */,
 				57D8A7451E2A5CF500CC120E /* RedditAuthorization+Rx.swift in Sources */,
 				57D8A7261E290DDB00CC120E /* RedditAuthorization.swift in Sources */,
-				57D8A7471E2A7B1300CC120E /* RedditService+Rx.swift in Sources */,
 				57D8A7491E2B113C00CC120E /* UserRequest.swift in Sources */,
+				57D8A74D1E2B309B00CC120E /* Session+Rx.swift in Sources */,
 				57D8A73C1E29F1F900CC120E /* RedditCredential.swift in Sources */,
 				57D8A7401E2A1E5500CC120E /* AccessTokenRequest.swift in Sources */,
 				57D8A6FC1E2681A000CC120E /* SecondViewController.swift in Sources */,

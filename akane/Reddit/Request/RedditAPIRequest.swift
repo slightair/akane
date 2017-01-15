@@ -10,16 +10,11 @@ extension RedditAPIRequest {
     }
 
     var headerFields: [String : String] {
-        var accessToken: String?
-        if let credential = RedditService.shared.currentCredential {
-            accessToken = credential.accessToken
-        }
-
         var fields = [
             "User-Agent": RedditAPI.userAgent,
         ]
 
-        if let accessToken = accessToken {
+        if let accessToken = RedditService.shared.accessToken {
             fields["Authorization"] = "Bearer \(accessToken)"
         }
 

@@ -3,4 +3,5 @@ github "ikesyo/Himotoki" ~> 3.0
 github "ishkawa/APIKit" ~> 3.0
 github "ViccAlexander/Chameleon" ~> 2.2
 github "onevcat/Kingfisher" ~> 3.2
+github "kishikawakatsumi/KeychainAccess" ~> 3.0
 

@@ -1,13 +1,13 @@
 import Foundation
 import RxSwift
-import RxCocoa
 
 final class InitialViewModel {
-    let needsLogin: Driver<Bool>
+    let needsLogin: Observable<Bool>
+    let loggedIn: Observable<Bool>
 
     init(
         input: (
-            requestLoginStatus: Observable<Void>,
+            requestInitialize: Observable<Void>,
             loginTaps: Observable<Void>
         ),
         dependency: (
@@ -15,16 +15,30 @@ final class InitialViewModel {
             redditAuthorization: RedditAuthorization
         )) {
 
-        let trialAuthorize = input.loginTaps.flatMapLatest {
-            dependency.redditAuthorization.rx.authorize()
-        }.flatMapLatest {
-            dependency.redditService.rx.login(credential: $0)
+        let fetchUserInfo = input.requestInitialize.flatMapLatest { () -> Observable<RedditUser> in
+            let service = dependency.redditService
+            if service.hasRefreshToken {
+                return service.fetchUserInfo()
+            }
+            return Observable.empty()
         }.map { _ in }
 
-        let loginStatus = Observable.of(input.requestLoginStatus, input.loginTaps, trialAuthorize)
-            .merge()
-            .map { _ in dependency.redditService.isLogin }
+        let trialAuthorization = input.loginTaps.flatMapLatest {
+            dependency.redditAuthorization.rx.authorize()
+        }.flatMapLatest {
+            dependency.redditService.fetchUserInfo(credential: $0)
+        }.map { _ in }
 
-        needsLogin = loginStatus.map { !$0 }.asDriver(onErrorJustReturn: true).distinctUntilChanged()
+        let statusUpdate = Observable.of(input.requestInitialize, input.loginTaps, fetchUserInfo, trialAuthorization)
+            .merge()
+            .shareReplay(1)
+
+        needsLogin = statusUpdate.map {
+            !dependency.redditService.hasRefreshToken
+        }.distinctUntilChanged()
+
+        loggedIn = statusUpdate.map {
+            dependency.redditService.hasUser
+        }.distinctUntilChanged()
     }
 }
