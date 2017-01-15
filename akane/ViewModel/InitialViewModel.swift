@@ -18,7 +18,7 @@ final class InitialViewModel {
         let trialAuthorize = input.loginTaps.flatMapLatest {
             dependency.redditAuthorization.rx.authorize()
         }.flatMapLatest {
-            dependency.redditService.rx.login(accessToken: $0)
+            dependency.redditService.rx.login(credential: $0)
         }.map { _ in }
 
         let loginStatus = Observable.of(input.requestLoginStatus, input.loginTaps, trialAuthorize)

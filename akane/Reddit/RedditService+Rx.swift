@@ -4,9 +4,9 @@ import RxSwift
 extension RedditService: ReactiveCompatible {}
 
 extension Reactive where Base: RedditService {
-    func login(accessToken: RedditAccessToken) -> Observable<RedditUser> {
+    func login(credential: RedditCredential) -> Observable<RedditUser> {
         return Observable.create { [weak base] observer in
-            base?.login(accessToken: accessToken) { result in
+            base?.login(credential: credential) { result in
                 switch result {
                 case .success(let user):
                     observer.onNext(user)

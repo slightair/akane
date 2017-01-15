@@ -11,10 +11,11 @@ class RedditAuthorization {
         case failedToRetrieveRefreshToken(Error)
     }
 
-    typealias CompletionBlock = ((Result<RedditAccessToken, AuthorizationError>) -> Void)
+    typealias CompletionBlock = ((Result<RedditCredential, AuthorizationError>) -> Void)
     static let shared = RedditAuthorization(clientID: RedditServiceConfiguration.clientID,
                                             redirectURI: "akane://oauth-callback",
                                             scope: [
+                                                "identity",
                                                 "read",
                                             ])
     let clientID: String
@@ -91,9 +92,9 @@ class RedditAuthorization {
         let request = RedditAPI.AccessTokenRequest(clientID: clientID, code: code, redirectURI: redirectURI)
         Session.send(request) { result in
             switch result {
-            case .success(let accessToken):
+            case .success(let credential):
                 self.currentWebViewController?.dismiss(animated: true) {
-                    self.completionBlock?(.success(accessToken))
+                    self.completionBlock?(.success(credential))
                     self.completionBlock = nil
                 }
             case .failure(let error):

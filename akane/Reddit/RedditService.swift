@@ -9,12 +9,22 @@ class RedditService {
         return currentUser != nil
     }
 
+    var currentCredential: RedditCredential?
     var currentUser: RedditUser?
 
-    func login(accessToken: RedditAccessToken, completion: ((Result<RedditUser, SessionTaskError>) -> Void)) {
-        let user = RedditUser()
-        currentUser = user
+    func login(credential: RedditCredential, completion: @escaping ((Result<RedditUser, SessionTaskError>) -> Void)) {
+        currentCredential = credential
 
-        completion(.success(user))
+        let request = RedditAPI.UserRequest()
+        Session.send(request) { result in
+            switch result {
+            case .success(let user):
+                self.currentUser = user
+
+                completion(.success(user))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }

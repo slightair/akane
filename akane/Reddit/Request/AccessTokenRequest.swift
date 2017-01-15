@@ -3,7 +3,7 @@ import APIKit
 
 extension RedditAPI {
     struct AccessTokenRequest: RedditAPIRequest {
-        typealias Response = RedditAccessToken
+        typealias Response = RedditCredential
 
         let method: HTTPMethod = .post
         let path: String = "/api/v1/access_token"
