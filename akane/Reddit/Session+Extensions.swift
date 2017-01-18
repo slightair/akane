@@ -5,7 +5,7 @@ import APIKit
 extension Session: ReactiveCompatible {}
 
 extension Reactive where Base: Session {
-    func response<T: Request>(_ request: T) -> Observable<T.Response> {
+    func response<T: Request>(_ request: T, refreshAccessTokenWhenExpired: Bool = true, service: RedditService = RedditService.shared) -> Observable<T.Response> {
         return Observable.create { [weak base] observer in
             let task = base?.send(request) { result in
                 switch result {
@@ -19,6 +19,13 @@ extension Reactive where Base: Session {
 
             return Disposables.create {
                 task?.cancel()
+            }
+        }.retryWhen { (errors: Observable<Error>) in
+            return errors.flatMapWithIndex { error, retryCount -> Observable<RedditCredential> in
+                if refreshAccessTokenWhenExpired, case SessionTaskError.responseError(ResponseError.unacceptableStatusCode(401)) = error, retryCount < 1 {
+                    return service.refreshAccessToken()
+                }
+                return Observable.error(error)
             }
         }
     }

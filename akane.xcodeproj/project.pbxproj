@@ -34,7 +34,7 @@
 		57D8A7451E2A5CF500CC120E /* RedditAuthorization+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7441E2A5CF500CC120E /* RedditAuthorization+Rx.swift */; };
 		57D8A7491E2B113C00CC120E /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7481E2B113C00CC120E /* UserRequest.swift */; };
 		57D8A74B1E2B2F3D00CC120E /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D8A74A1E2B2F3D00CC120E /* KeychainAccess.framework */; };
-		57D8A74D1E2B309B00CC120E /* Session+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A74C1E2B309B00CC120E /* Session+Rx.swift */; };
+		57D8A74D1E2B309B00CC120E /* Session+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A74C1E2B309B00CC120E /* Session+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +79,7 @@
 		57D8A7441E2A5CF500CC120E /* RedditAuthorization+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RedditAuthorization+Rx.swift"; sourceTree = "<group>"; };
 		57D8A7481E2B113C00CC120E /* UserRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
 		57D8A74A1E2B2F3D00CC120E /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
-		57D8A74C1E2B309B00CC120E /* Session+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+Rx.swift"; sourceTree = "<group>"; };
+		57D8A74C1E2B309B00CC120E /* Session+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +136,6 @@
 				57D8A6F71E2681A000CC120E /* AppDelegate.swift */,
 				57D8A6F91E2681A000CC120E /* FirstViewController.swift */,
 				57D8A6FB1E2681A000CC120E /* SecondViewController.swift */,
-				57D8A74C1E2B309B00CC120E /* Session+Rx.swift */,
 				57D8A6FD1E2681A000CC120E /* Main.storyboard */,
 				57D8A7001E2681A000CC120E /* Assets.xcassets */,
 				57D8A7021E2681A000CC120E /* LaunchScreen.storyboard */,
@@ -171,6 +170,7 @@
 				57D8A7251E290DDB00CC120E /* RedditAuthorization.swift */,
 				57D8A7441E2A5CF500CC120E /* RedditAuthorization+Rx.swift */,
 				57D8A71F1E27CACD00CC120E /* RedditUser.swift */,
+				57D8A74C1E2B309B00CC120E /* Session+Extensions.swift */,
 			);
 			path = Reddit;
 			sourceTree = "<group>";
@@ -343,7 +343,7 @@
 				57D8A7451E2A5CF500CC120E /* RedditAuthorization+Rx.swift in Sources */,
 				57D8A7261E290DDB00CC120E /* RedditAuthorization.swift in Sources */,
 				57D8A7491E2B113C00CC120E /* UserRequest.swift in Sources */,
-				57D8A74D1E2B309B00CC120E /* Session+Rx.swift in Sources */,
+				57D8A74D1E2B309B00CC120E /* Session+Extensions.swift in Sources */,
 				57D8A73C1E29F1F900CC120E /* RedditCredential.swift in Sources */,
 				57D8A7401E2A1E5500CC120E /* AccessTokenRequest.swift in Sources */,
 				57D8A6FC1E2681A000CC120E /* SecondViewController.swift in Sources */,

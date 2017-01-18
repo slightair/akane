@@ -7,6 +7,7 @@ class RedditService {
     static let shared = RedditService()
 
     let clientID: String
+    let session: Session
 
     private var keychain: Keychain {
         let service = "\(Bundle.main.bundleIdentifier!).reddit"
@@ -31,28 +32,19 @@ class RedditService {
 
     private(set) var currentUser: RedditUser?
 
-    init(clientID: String = RedditServiceConfiguration.clientID) {
+    init(clientID: String = RedditServiceConfiguration.clientID, session: Session = Session.shared) {
         self.clientID = clientID
+        self.session = session
     }
 
-    func fetchUserInfo(credential: RedditCredential) -> Observable<RedditUser> {
-        storeCredential(credential)
+    func fetchUserInfo(credential: RedditCredential? = nil) -> Observable<RedditUser> {
+        if let credential = credential {
+            storeCredential(credential)
+        }
 
-        return fetchUserInfo()
-    }
-
-    func fetchUserInfo() -> Observable<RedditUser> {
         let request = RedditAPI.UserRequest()
-        return Session.shared.rx
-            .response(request)
-            .retryWhen { (errors: Observable<Error>) in
-                return errors.flatMapWithIndex { error, retryCount -> Observable<RedditCredential> in
-                    if case SessionTaskError.responseError(ResponseError.unacceptableStatusCode(401)) = error, retryCount < 1 {
-                        return self.refreshAccessToken()
-                    }
-                    return Observable.error(error)
-                }
-            }
+        return session.rx
+            .response(request, service: self)
             .do(onNext: { user in
                 self.currentUser = user
             })
@@ -64,7 +56,8 @@ class RedditService {
         }
 
         let request = RedditAPI.AccessTokenRequest(clientID: clientID, refreshToken: refreshToken)
-        return Session.shared.rx.response(request)
+        return session.rx
+            .response(request, refreshAccessTokenWhenExpired: false, service: self)
             .do(onNext: { credential in
                 self.storeCredential(credential)
             })
