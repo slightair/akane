@@ -1,4 +1,5 @@
 import UIKit
+import SafariServices
 import RxSwift
 import RxCocoa
 
@@ -7,36 +8,56 @@ class InitialViewController: UIViewController {
 
     let disposeBag = DisposeBag()
 
+    var currentWebViewController: SFSafariViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let requestInitialize = rx.sentMessage(#selector(viewWillAppear)).take(1).map { _ in }
+        let requestFetchUser = PublishSubject<Void>()
+        let firstViewWillAppeared = rx.sentMessage(#selector(viewWillAppear)).take(1).map { _ in }
+        let fetchUserTrigger = Observable.of(requestFetchUser, firstViewWillAppeared).merge()
 
         let viewModel = InitialViewModel(
-            input: (
-                requestInitialize: requestInitialize,
-                loginTaps: loginButton.rx.tap.asObservable()
-            ),
+            fetchUserTrigger: fetchUserTrigger,
             dependency: (
                 redditService: RedditService.shared,
                 redditAuthorization: RedditAuthorization.shared
             )
         )
 
-        let hideLoginButton = viewModel.needsLogin.map { !$0 }
-            .asDriver(onErrorJustReturn: false)
-        hideLoginButton.drive(loginButton.rx.isHidden)
+        loginButton.rx.tap.asObservable()
+            .map { RedditAuthorization.shared.authorizeURL }
+            .subscribe(onNext: { url in
+                self.presentRedditAuthorization()
+            }).addDisposableTo(disposeBag)
+
+        viewModel.retrievedCredential.subscribe(onNext: { credential in
+            self.currentWebViewController?.dismiss(animated: true, completion: nil)
+            requestFetchUser.onNext(())
+        }).addDisposableTo(disposeBag)
+
+        viewModel.needsLogin.map { !$0 }
+            .bindTo(loginButton.rx.isHidden)
             .addDisposableTo(disposeBag)
 
-        let viewDidAppeared = rx.sentMessage(#selector(viewDidAppear)).take(1).map { _ in }
+        let firstViewDidAppeared = rx.sentMessage(#selector(viewDidAppear)).take(1)
+        Observable.combineLatest(viewModel.loggedIn.filter { $0 }, firstViewDidAppeared) { _ in }
+            .subscribe(onNext: {
+                self.presentHomeView()
+            }).addDisposableTo(disposeBag)
+    }
 
-        let presentHomeView = Observable.combineLatest(viewModel.loggedIn.filter { $0 }, viewDidAppeared) { _ in }
-            .asDriver(onErrorJustReturn: ())
-        presentHomeView.drive(onNext: {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Home")
-            viewController.modalTransitionStyle = .crossDissolve
-            self.present(viewController, animated: true, completion: nil)
-        }).addDisposableTo(disposeBag)
+    func presentRedditAuthorization() {
+        let viewController = SFSafariViewController(url: RedditAuthorization.shared.authorizeURL)
+        viewController.modalTransitionStyle = .crossDissolve
+        self.currentWebViewController = viewController
+        self.present(viewController, animated: true, completion: nil)
+    }
+
+    func presentHomeView() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Home")
+        viewController.modalTransitionStyle = .crossDissolve
+        self.present(viewController, animated: true, completion: nil)
     }
 }

@@ -1,7 +1,6 @@
 import Foundation
-import SafariServices
 import APIKit
-import Result
+import RxSwift
 
 class RedditAuthorization {
     enum AuthorizationError: Error {
@@ -11,7 +10,6 @@ class RedditAuthorization {
         case failedToRetrieveRefreshToken(Error)
     }
 
-    typealias CompletionBlock = ((Result<RedditCredential, AuthorizationError>) -> Void)
     static let shared = RedditAuthorization(clientID: RedditServiceConfiguration.clientID,
                                             redirectURI: "akane://oauth-callback",
                                             scope: [
@@ -23,8 +21,7 @@ class RedditAuthorization {
     let scope: [String]
     var recentState: String?
 
-    var currentWebViewController: UIViewController?
-    var completionBlock: CompletionBlock?
+    let credentials = PublishSubject<RedditCredential>()
 
     var authorizeURL: URL {
         let state = updateState()
@@ -55,37 +52,25 @@ class RedditAuthorization {
         return state
     }
 
-    func authorize(completion: @escaping CompletionBlock) {
-        completionBlock = completion
-
-        let safariViewController = SFSafariViewController(url: authorizeURL)
-        currentWebViewController = safariViewController
-
-        guard let viewController = UIApplication.shared.delegate?.window??.rootViewController else {
-            fatalError("Cannot present web view controller")
-        }
-        viewController.present(safariViewController, animated: true, completion: nil)
-    }
-
     func handle(url: URL) {
         let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
         guard let queryItems = urlComponents.queryItems else {
-            completionBlock?(.failure(.invalidCallbackURL(url)))
+            credentials.onError(AuthorizationError.invalidCallbackURL(url))
             return
         }
 
         if let error = queryItems.first(where: { $0.name == "error" })?.value {
-            completionBlock?(.failure(.failedToRequest(error)))
+            credentials.onError(AuthorizationError.failedToRequest(error))
             return
         }
 
         guard let state = queryItems.first(where: { $0.name == "state" })?.value, state == recentState else {
-            completionBlock?(.failure(.stateMismatch))
+            credentials.onError(AuthorizationError.stateMismatch)
             return
         }
 
         guard let code = queryItems.first(where: { $0.name == "code" })?.value else {
-            completionBlock?(.failure(.invalidCallbackURL(url)))
+            credentials.onError(AuthorizationError.invalidCallbackURL(url))
             return
         }
 
@@ -93,17 +78,11 @@ class RedditAuthorization {
         Session.send(request) { result in
             switch result {
             case .success(let credential):
-                self.currentWebViewController?.dismiss(animated: true) {
-                    self.completionBlock?(.success(credential))
-                    self.completionBlock = nil
-                }
+                self.credentials.onNext(credential)
+                self.credentials.onCompleted()
             case .failure(let error):
-                self.currentWebViewController?.dismiss(animated: true) {
-                    self.completionBlock?(.failure(.failedToRetrieveRefreshToken(error)))
-                    self.completionBlock = nil
-                }
+                self.credentials.onError(AuthorizationError.failedToRetrieveRefreshToken(error))
             }
-            self.currentWebViewController = nil
         }
     }
 }

@@ -37,9 +37,9 @@ class RedditService {
         self.session = session
     }
 
-    func fetchUserInfo(credential: RedditCredential? = nil) -> Observable<RedditUser> {
-        if let credential = credential {
-            storeCredential(credential)
+    func fetchUserInfo() -> Observable<RedditUser> {
+        if !hasRefreshToken {
+            return Observable.empty()
         }
 
         let request = RedditAPI.UserRequest()
@@ -63,7 +63,7 @@ class RedditService {
             })
     }
 
-    private func storeCredential(_ credential: RedditCredential) {
+    func storeCredential(_ credential: RedditCredential) {
         let keychain = self.keychain
 
         keychain["accessToken"] = credential.accessToken

@@ -3,41 +3,36 @@ import RxSwift
 
 final class InitialViewModel {
     let needsLogin: Observable<Bool>
+    let retrievedCredential: Observable<Void>
     let loggedIn: Observable<Bool>
 
     init(
-        input: (
-            requestInitialize: Observable<Void>,
-            loginTaps: Observable<Void>
-        ),
+        fetchUserTrigger: Observable<Void>,
         dependency: (
             redditService: RedditService,
             redditAuthorization: RedditAuthorization
         )) {
 
-        let fetchUserInfo = input.requestInitialize.flatMapLatest { () -> Observable<RedditUser> in
-            let service = dependency.redditService
-            if service.hasRefreshToken {
-                return service.fetchUserInfo()
-            }
-            return Observable.empty()
+        let userUpdated = fetchUserTrigger.flatMapLatest {
+            dependency.redditService.fetchUserInfo()
         }.map { _ in }
 
-        let trialAuthorization = input.loginTaps.flatMapLatest {
-            dependency.redditAuthorization.rx.authorize()
-        }.flatMapLatest {
-            dependency.redditService.fetchUserInfo(credential: $0)
-        }.map { _ in }
-
-        let statusUpdate = Observable.of(input.requestInitialize, input.loginTaps, fetchUserInfo, trialAuthorization)
+        let statusUpdated = Observable.of(fetchUserTrigger, userUpdated)
             .merge()
             .shareReplay(1)
 
-        needsLogin = statusUpdate.map {
+        needsLogin = statusUpdated.map {
             !dependency.redditService.hasRefreshToken
         }.distinctUntilChanged()
 
-        loggedIn = statusUpdate.map {
+        retrievedCredential = dependency.redditAuthorization.credentials
+            .do(onNext: { credential in
+                dependency.redditService.storeCredential(credential)
+            })
+            .map { _ in }
+            .shareReplay(1)
+
+        loggedIn = statusUpdated.map {
             dependency.redditService.hasUser
         }.distinctUntilChanged()
     }
