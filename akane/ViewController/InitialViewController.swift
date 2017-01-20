@@ -13,42 +13,53 @@ class InitialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let requestFetchUser = PublishSubject<Void>()
-        let firstViewWillAppeared = rx.sentMessage(#selector(viewWillAppear)).take(1).map { _ in }
-        let fetchUserTrigger = Observable.of(requestFetchUser, firstViewWillAppeared).merge()
-
+        let fetchUserTrigger = PublishSubject<Void>()
         let viewModel = InitialViewModel(
-            fetchUserTrigger: fetchUserTrigger,
+            input: (
+                loginTaps: loginButton.rx.tap.asObservable(),
+                fetchUserTrigger: fetchUserTrigger
+            ),
             dependency: (
                 redditService: RedditService.shared,
                 redditAuthorization: RedditAuthorization.shared
             )
         )
 
-        loginButton.rx.tap.asObservable()
-            .map { RedditAuthorization.shared.authorizeURL }
-            .subscribe(onNext: { url in
-                self.presentRedditAuthorization()
-            }).addDisposableTo(disposeBag)
+        rx.sentMessage(#selector(viewWillAppear))
+            .take(1)
+            .subscribe(onNext: { _ in
+                fetchUserTrigger.onNext(())
+            })
+            .addDisposableTo(disposeBag)
 
-        viewModel.retrievedCredential.subscribe(onNext: { credential in
-            self.currentWebViewController?.dismiss(animated: true, completion: nil)
-            requestFetchUser.onNext(())
-        }).addDisposableTo(disposeBag)
-
-        viewModel.needsLogin.map { !$0 }
+        viewModel.needsLogin
+            .map { !$0 }
             .bindTo(loginButton.rx.isHidden)
             .addDisposableTo(disposeBag)
 
-        let firstViewDidAppeared = rx.sentMessage(#selector(viewDidAppear)).take(1)
-        Observable.combineLatest(viewModel.loggedIn.filter { $0 }, firstViewDidAppeared) { _ in }
-            .subscribe(onNext: {
+        viewModel.needsAuthorize
+            .subscribe(onNext: { url in
+                self.presentRedditAuthorization(url: url)
+            })
+            .addDisposableTo(disposeBag)
+
+        viewModel.retrievedCredential
+            .subscribe(onNext: { _ in
+                self.currentWebViewController?.dismiss(animated: true, completion: nil)
+                fetchUserTrigger.onNext(())
+            })
+            .addDisposableTo(disposeBag)
+
+        viewModel.loggedIn
+            .filter { $0 }
+            .subscribe(onNext: { _ in
                 self.presentHomeView()
-            }).addDisposableTo(disposeBag)
+            })
+            .addDisposableTo(disposeBag)
     }
 
-    func presentRedditAuthorization() {
-        let viewController = SFSafariViewController(url: RedditAuthorization.shared.authorizeURL)
+    func presentRedditAuthorization(url: URL) {
+        let viewController = SFSafariViewController(url: url)
         viewController.modalTransitionStyle = .crossDissolve
         self.currentWebViewController = viewController
         self.present(viewController, animated: true, completion: nil)

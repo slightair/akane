@@ -3,37 +3,44 @@ import RxSwift
 
 final class InitialViewModel {
     let needsLogin: Observable<Bool>
-    let retrievedCredential: Observable<Void>
+    let needsAuthorize: Observable<URL>
+    let retrievedCredential: Observable<RedditCredential>
     let loggedIn: Observable<Bool>
 
     init(
-        fetchUserTrigger: Observable<Void>,
+        input: (
+            loginTaps: Observable<Void>,
+            fetchUserTrigger: Observable<Void>
+        ),
         dependency: (
             redditService: RedditService,
             redditAuthorization: RedditAuthorization
         )) {
 
-        let userUpdated = fetchUserTrigger.flatMapLatest {
-            dependency.redditService.fetchUserInfo()
-        }.map { _ in }
+        let userUpdated = input.fetchUserTrigger
+            .flatMapLatest { dependency.redditService.fetchUserInfo() }
+            .map { _ in }
 
-        let statusUpdated = Observable.of(fetchUserTrigger, userUpdated)
+        let statusUpdated = Observable.of(input.fetchUserTrigger, userUpdated)
             .merge()
             .shareReplay(1)
 
-        needsLogin = statusUpdated.map {
-            !dependency.redditService.hasRefreshToken
-        }.distinctUntilChanged()
-
-        retrievedCredential = dependency.redditAuthorization.credentials
-            .do(onNext: { credential in
-                dependency.redditService.storeCredential(credential)
-            })
-            .map { _ in }
+        needsLogin = statusUpdated
+            .map { !dependency.redditService.hasRefreshToken }
+            .distinctUntilChanged()
             .shareReplay(1)
 
-        loggedIn = statusUpdated.map {
-            dependency.redditService.hasUser
-        }.distinctUntilChanged()
+        needsAuthorize = input.loginTaps
+            .map { RedditAuthorization.shared.authorizeURL }
+            .shareReplay(1)
+
+        retrievedCredential = dependency.redditAuthorization.credentials
+            .do(onNext: { dependency.redditService.storeCredential($0) })
+            .shareReplay(1)
+
+        loggedIn = statusUpdated
+            .map { dependency.redditService.hasUser }
+            .distinctUntilChanged()
+            .shareReplay(1)
     }
 }
