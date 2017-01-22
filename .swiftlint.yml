@@ -1,0 +1,11 @@
+disabled_rules:
+  - force_cast
+  - type_name
+  - variable_name
+  - function_body_length
+  - line_length
+  - type_body_length
+  - file_length
+  - nesting
+excluded:
+  - Carthage
