@@ -20,8 +20,8 @@ class InitialViewController: UIViewController {
                 fetchUserTrigger: fetchUserTrigger
             ),
             dependency: (
-                redditService: RedditService.shared,
-                redditAuthorization: RedditAuthorization.shared
+                redditService: RedditDefaultService.shared,
+                redditAuthorization: RedditDefaultAuthorization.shared
             )
         )
 
@@ -45,8 +45,8 @@ class InitialViewController: UIViewController {
 
         viewModel.retrievedCredential
             .subscribe(onNext: { _ in
-                self.currentWebViewController?.dismiss(animated: true, completion: nil)
                 fetchUserTrigger.onNext(())
+                self.currentWebViewController?.dismiss(animated: true, completion: nil)
             })
             .addDisposableTo(disposeBag)
 

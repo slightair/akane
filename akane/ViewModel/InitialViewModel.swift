@@ -31,10 +31,10 @@ final class InitialViewModel {
             .shareReplay(1)
 
         needsAuthorize = input.loginTaps
-            .map { RedditAuthorization.shared.authorizeURL }
+            .map { dependency.redditAuthorization.authorizeURL }
             .shareReplay(1)
 
-        retrievedCredential = dependency.redditAuthorization.credentials
+        retrievedCredential = dependency.redditAuthorization.credential
             .do(onNext: { dependency.redditService.storeCredential($0) })
             .shareReplay(1)
 

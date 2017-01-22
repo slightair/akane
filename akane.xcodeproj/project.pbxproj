@@ -7,18 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		570A522B1E34EF9D00563365 /* MockRedditService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570A522A1E34EF9D00563365 /* MockRedditService.swift */; };
+		570A522D1E34EFA800563365 /* MockRedditAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570A522C1E34EFA800563365 /* MockRedditAuthorization.swift */; };
+		570A522F1E34FB2000563365 /* TestScheduler+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570A522E1E34FB2000563365 /* TestScheduler+Extensions.swift */; };
+		570A52331E35235B00563365 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570A52321E35235A00563365 /* RxBlocking.framework */; };
+		572A57A61E34E41200B577E8 /* InitialViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572A57A51E34E41200B577E8 /* InitialViewModelTest.swift */; };
+		572A57A71E34E41C00B577E8 /* InitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7421E2A24ED00CC120E /* InitialViewModel.swift */; };
+		572A57A81E34E56000B577E8 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D8A74A1E2B2F3D00CC120E /* KeychainAccess.framework */; };
+		572A57A91E34E56000B577E8 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D8A7291E29E19800CC120E /* APIKit.framework */; };
+		572A57AA1E34E56000B577E8 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D8A72A1E29E19800CC120E /* Result.framework */; };
+		572A57AC1E34E56000B577E8 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D8A72C1E29E19800CC120E /* Himotoki.framework */; };
+		572A57AE1E34E56000B577E8 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D8A72E1E29E19800CC120E /* RxSwift.framework */; };
+		572A57AF1E34E56000B577E8 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D8A72F1E29E19800CC120E /* RxCocoa.framework */; };
+		572A57B51E34E5EE00B577E8 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 572A57B01E34E5C400B577E8 /* RxTest.framework */; };
+		572A57B71E34E62C00B577E8 /* RedditDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A71D1E27C99400CC120E /* RedditDefaultService.swift */; };
+		572A57B81E34E63B00B577E8 /* RedditDefaultAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7251E290DDB00CC120E /* RedditDefaultAuthorization.swift */; };
+		572A57B91E34E64400B577E8 /* RedditUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A71F1E27CACD00CC120E /* RedditUser.swift */; };
+		572A57BA1E34E64C00B577E8 /* Session+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A74C1E2B309B00CC120E /* Session+Extensions.swift */; };
+		572A57BB1E34E65900B577E8 /* RedditServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7231E27D1BC00CC120E /* RedditServiceConfiguration.swift */; };
+		572A57BC1E34E65E00B577E8 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7481E2B113C00CC120E /* UserRequest.swift */; };
+		572A57C01E34E66600B577E8 /* RedditAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7391E29F07200CC120E /* RedditAPI.swift */; };
+		572A57C11E34E66600B577E8 /* RedditAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7371E29F06200CC120E /* RedditAPIRequest.swift */; };
+		572A57C21E34E66600B577E8 /* RedditCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A73B1E29F1F900CC120E /* RedditCredential.swift */; };
+		572A57C31E34E66600B577E8 /* AccessTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A73F1E2A1E5500CC120E /* AccessTokenRequest.swift */; };
+		572A57C51E34E97B00B577E8 /* RedditService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572A57C41E34E97B00B577E8 /* RedditService.swift */; };
+		572A57C61E34E97B00B577E8 /* RedditService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572A57C41E34E97B00B577E8 /* RedditService.swift */; };
+		572A57C81E34E99500B577E8 /* RedditAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572A57C71E34E99500B577E8 /* RedditAuthorization.swift */; };
+		572A57C91E34E99500B577E8 /* RedditAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572A57C71E34E99500B577E8 /* RedditAuthorization.swift */; };
 		57D8A6F81E2681A000CC120E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A6F71E2681A000CC120E /* AppDelegate.swift */; };
 		57D8A6FA1E2681A000CC120E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A6F91E2681A000CC120E /* FirstViewController.swift */; };
 		57D8A6FC1E2681A000CC120E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A6FB1E2681A000CC120E /* SecondViewController.swift */; };
 		57D8A6FF1E2681A000CC120E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57D8A6FD1E2681A000CC120E /* Main.storyboard */; };
 		57D8A7011E2681A000CC120E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57D8A7001E2681A000CC120E /* Assets.xcassets */; };
 		57D8A7041E2681A000CC120E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57D8A7021E2681A000CC120E /* LaunchScreen.storyboard */; };
-		57D8A70F1E2681A000CC120E /* akaneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A70E1E2681A000CC120E /* akaneTests.swift */; };
-		57D8A71E1E27C99400CC120E /* RedditService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A71D1E27C99400CC120E /* RedditService.swift */; };
+		57D8A71E1E27C99400CC120E /* RedditDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A71D1E27C99400CC120E /* RedditDefaultService.swift */; };
 		57D8A7201E27CACE00CC120E /* RedditUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A71F1E27CACD00CC120E /* RedditUser.swift */; };
 		57D8A7221E27CBB200CC120E /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7211E27CBB200CC120E /* InitialViewController.swift */; };
 		57D8A7241E27D1BC00CC120E /* RedditServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7231E27D1BC00CC120E /* RedditServiceConfiguration.swift */; };
-		57D8A7261E290DDB00CC120E /* RedditAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7251E290DDB00CC120E /* RedditAuthorization.swift */; };
+		57D8A7261E290DDB00CC120E /* RedditDefaultAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A7251E290DDB00CC120E /* RedditDefaultAuthorization.swift */; };
 		57D8A7301E29E19800CC120E /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D8A7291E29E19800CC120E /* APIKit.framework */; };
 		57D8A7311E29E19800CC120E /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D8A72A1E29E19800CC120E /* Result.framework */; };
 		57D8A7321E29E19800CC120E /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D8A72B1E29E19800CC120E /* Kingfisher.framework */; };
@@ -47,6 +73,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		570A522A1E34EF9D00563365 /* MockRedditService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockRedditService.swift; sourceTree = "<group>"; };
+		570A522C1E34EFA800563365 /* MockRedditAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockRedditAuthorization.swift; sourceTree = "<group>"; };
+		570A522E1E34FB2000563365 /* TestScheduler+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TestScheduler+Extensions.swift"; sourceTree = "<group>"; };
+		570A52321E35235A00563365 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		572A57A51E34E41200B577E8 /* InitialViewModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewModelTest.swift; sourceTree = "<group>"; };
+		572A57B01E34E5C400B577E8 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
+		572A57C41E34E97B00B577E8 /* RedditService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditService.swift; sourceTree = "<group>"; };
+		572A57C71E34E99500B577E8 /* RedditAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditAuthorization.swift; sourceTree = "<group>"; };
 		57D8A6F41E2681A000CC120E /* akane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = akane.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57D8A6F71E2681A000CC120E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57D8A6F91E2681A000CC120E /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -56,13 +90,12 @@
 		57D8A7031E2681A000CC120E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57D8A7051E2681A000CC120E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57D8A70A1E2681A000CC120E /* akaneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = akaneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		57D8A70E1E2681A000CC120E /* akaneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = akaneTests.swift; sourceTree = "<group>"; };
 		57D8A7101E2681A000CC120E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		57D8A71D1E27C99400CC120E /* RedditService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditService.swift; sourceTree = "<group>"; };
+		57D8A71D1E27C99400CC120E /* RedditDefaultService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditDefaultService.swift; sourceTree = "<group>"; };
 		57D8A71F1E27CACD00CC120E /* RedditUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditUser.swift; sourceTree = "<group>"; };
 		57D8A7211E27CBB200CC120E /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		57D8A7231E27D1BC00CC120E /* RedditServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditServiceConfiguration.swift; sourceTree = "<group>"; };
-		57D8A7251E290DDB00CC120E /* RedditAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditAuthorization.swift; sourceTree = "<group>"; };
+		57D8A7251E290DDB00CC120E /* RedditDefaultAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditDefaultAuthorization.swift; sourceTree = "<group>"; };
 		57D8A7291E29E19800CC120E /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
 		57D8A72A1E29E19800CC120E /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		57D8A72B1E29E19800CC120E /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -100,12 +133,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				572A57AA1E34E56000B577E8 /* Result.framework in Frameworks */,
+				572A57A91E34E56000B577E8 /* APIKit.framework in Frameworks */,
+				572A57AE1E34E56000B577E8 /* RxSwift.framework in Frameworks */,
+				570A52331E35235B00563365 /* RxBlocking.framework in Frameworks */,
+				572A57AC1E34E56000B577E8 /* Himotoki.framework in Frameworks */,
+				572A57AF1E34E56000B577E8 /* RxCocoa.framework in Frameworks */,
+				572A57B51E34E5EE00B577E8 /* RxTest.framework in Frameworks */,
+				572A57A81E34E56000B577E8 /* KeychainAccess.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		570A52291E34EF6700563365 /* Reddit */ = {
+			isa = PBXGroup;
+			children = (
+				570A522A1E34EF9D00563365 /* MockRedditService.swift */,
+				570A522C1E34EFA800563365 /* MockRedditAuthorization.swift */,
+			);
+			path = Reddit;
+			sourceTree = "<group>";
+		};
+		572A57A41E34E2D000B577E8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				572A57A51E34E41200B577E8 /* InitialViewModelTest.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		57D8A6EB1E2681A000CC120E = {
 			isa = PBXGroup;
 			children = (
@@ -145,8 +203,10 @@
 		57D8A70D1E2681A000CC120E /* akaneTests */ = {
 			isa = PBXGroup;
 			children = (
-				57D8A70E1E2681A000CC120E /* akaneTests.swift */,
+				570A52291E34EF6700563365 /* Reddit */,
+				572A57A41E34E2D000B577E8 /* ViewModel */,
 				57D8A7101E2681A000CC120E /* Info.plist */,
+				570A522E1E34FB2000563365 /* TestScheduler+Extensions.swift */,
 			);
 			path = akaneTests;
 			sourceTree = "<group>";
@@ -164,8 +224,10 @@
 			children = (
 				57D8A71C1E27C97B00CC120E /* Request */,
 				57D8A7231E27D1BC00CC120E /* RedditServiceConfiguration.swift */,
-				57D8A71D1E27C99400CC120E /* RedditService.swift */,
-				57D8A7251E290DDB00CC120E /* RedditAuthorization.swift */,
+				572A57C41E34E97B00B577E8 /* RedditService.swift */,
+				57D8A71D1E27C99400CC120E /* RedditDefaultService.swift */,
+				572A57C71E34E99500B577E8 /* RedditAuthorization.swift */,
+				57D8A7251E290DDB00CC120E /* RedditDefaultAuthorization.swift */,
 				57D8A71F1E27CACD00CC120E /* RedditUser.swift */,
 				57D8A74C1E2B309B00CC120E /* Session+Extensions.swift */,
 			);
@@ -195,6 +257,8 @@
 				57D8A72D1E29E19800CC120E /* Chameleon.framework */,
 				57D8A72E1E29E19800CC120E /* RxSwift.framework */,
 				57D8A72F1E29E19800CC120E /* RxCocoa.framework */,
+				572A57B01E34E5C400B577E8 /* RxTest.framework */,
+				570A52321E35235A00563365 /* RxBlocking.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -233,9 +297,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 57D8A7161E2681A000CC120E /* Build configuration list for PBXNativeTarget "akaneTests" */;
 			buildPhases = (
+				570A52311E34FEF600563365 /* SwiftLint */,
 				57D8A7061E2681A000CC120E /* Sources */,
 				57D8A7071E2681A000CC120E /* Frameworks */,
 				57D8A7081E2681A000CC120E /* Resources */,
+				570A52301E34FE4300563365 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -263,6 +329,7 @@
 					};
 					57D8A7091E2681A000CC120E = {
 						CreatedOnToolsVersion = 8.2;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 57D8A6F31E2681A000CC120E;
 					};
@@ -308,6 +375,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		570A52301E34FE4300563365 /* Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxTest.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
+			);
+			name = "Copy Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -e /usr/local/bin/carthage ]; then\n    /usr/local/bin/carthage copy-frameworks\nelif [ -e /opt/brew/bin/carthage ]; then\n    /opt/brew/bin/carthage copy-frameworks\nfi\n";
+		};
+		570A52311E34FEF600563365 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which /usr/local/bin/swiftlint >/dev/null; then\n    /opt/brew/bin/swiftlint\nelif which /opt/brew/bin/swiftlint >/dev/null; then\n    /opt/brew/bin/swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		572A57A31E34DEFC00B577E8 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -352,7 +449,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				57D8A7201E27CACE00CC120E /* RedditUser.swift in Sources */,
-				57D8A7261E290DDB00CC120E /* RedditAuthorization.swift in Sources */,
+				57D8A7261E290DDB00CC120E /* RedditDefaultAuthorization.swift in Sources */,
+				572A57C81E34E99500B577E8 /* RedditAuthorization.swift in Sources */,
 				57D8A7491E2B113C00CC120E /* UserRequest.swift in Sources */,
 				57D8A74D1E2B309B00CC120E /* Session+Extensions.swift in Sources */,
 				57D8A73C1E29F1F900CC120E /* RedditCredential.swift in Sources */,
@@ -362,10 +460,11 @@
 				57D8A7241E27D1BC00CC120E /* RedditServiceConfiguration.swift in Sources */,
 				57D8A7221E27CBB200CC120E /* InitialViewController.swift in Sources */,
 				57D8A7381E29F06200CC120E /* RedditAPIRequest.swift in Sources */,
+				572A57C51E34E97B00B577E8 /* RedditService.swift in Sources */,
 				57D8A6FA1E2681A000CC120E /* FirstViewController.swift in Sources */,
 				57D8A73A1E29F07200CC120E /* RedditAPI.swift in Sources */,
 				57D8A7431E2A24ED00CC120E /* InitialViewModel.swift in Sources */,
-				57D8A71E1E27C99400CC120E /* RedditService.swift in Sources */,
+				57D8A71E1E27C99400CC120E /* RedditDefaultService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +472,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57D8A70F1E2681A000CC120E /* akaneTests.swift in Sources */,
+				572A57BB1E34E65900B577E8 /* RedditServiceConfiguration.swift in Sources */,
+				572A57B91E34E64400B577E8 /* RedditUser.swift in Sources */,
+				572A57BC1E34E65E00B577E8 /* UserRequest.swift in Sources */,
+				572A57C31E34E66600B577E8 /* AccessTokenRequest.swift in Sources */,
+				572A57A61E34E41200B577E8 /* InitialViewModelTest.swift in Sources */,
+				572A57C11E34E66600B577E8 /* RedditAPIRequest.swift in Sources */,
+				572A57C21E34E66600B577E8 /* RedditCredential.swift in Sources */,
+				572A57BA1E34E64C00B577E8 /* Session+Extensions.swift in Sources */,
+				572A57B81E34E63B00B577E8 /* RedditDefaultAuthorization.swift in Sources */,
+				572A57C91E34E99500B577E8 /* RedditAuthorization.swift in Sources */,
+				572A57A71E34E41C00B577E8 /* InitialViewModel.swift in Sources */,
+				570A522F1E34FB2000563365 /* TestScheduler+Extensions.swift in Sources */,
+				572A57B71E34E62C00B577E8 /* RedditDefaultService.swift in Sources */,
+				570A522B1E34EF9D00563365 /* MockRedditService.swift in Sources */,
+				572A57C61E34E97B00B577E8 /* RedditService.swift in Sources */,
+				572A57C01E34E66600B577E8 /* RedditAPI.swift in Sources */,
+				570A522D1E34EFA800563365 /* MockRedditAuthorization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,10 +652,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = akaneTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cc.clv.ios.akaneTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/akane.app/akane";
 			};
@@ -551,6 +672,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = akaneTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cc.clv.ios.akaneTests;

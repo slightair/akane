@@ -14,7 +14,7 @@ extension RedditAPIRequest {
             "User-Agent": RedditAPI.userAgent,
         ]
 
-        if let accessToken = RedditService.shared.accessToken {
+        if let accessToken = RedditDefaultService.shared.accessToken {
             fields["Authorization"] = "Bearer \(accessToken)"
         }
 
