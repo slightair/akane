@@ -23,7 +23,6 @@ class FirstViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        print("user: \(RedditService.shared.currentUser?.name)")
+        print("user: \(RedditDefaultService.shared.currentUser?.name)")
     }
 }
-
