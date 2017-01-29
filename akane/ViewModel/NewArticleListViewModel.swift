@@ -56,5 +56,6 @@ class NewArticleListViewModel {
                 self.lastArticleName = articles.last?.name
             })
             .startWith([])
+            .shareReplay(1)
     }
 }

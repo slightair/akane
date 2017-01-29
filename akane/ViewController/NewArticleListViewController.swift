@@ -10,15 +10,12 @@ class NewArticleListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let beforeButton = UIBarButtonItem(title: "before", style: .plain, target: nil, action: nil)
-        let afterButton = UIBarButtonItem(title: "after", style: .plain, target: nil, action: nil)
-
-        navigationItem.leftBarButtonItem = beforeButton
-        navigationItem.rightBarButtonItem = afterButton
+        let refreshControl = UIRefreshControl()
+        tableView.refreshControl = refreshControl
 
         let refreshTrigger = rx.sentMessage(#selector(viewWillAppear)).map { _ in }
-        let loadBeforeTrigger = beforeButton.rx.tap
-        let loadAfterTrigger = afterButton.rx.tap
+        let loadBeforeTrigger = refreshControl.rx.controlEvent(.valueChanged)
+        let loadAfterTrigger = tableView.rx.reachedBottom
 
         let viewModel = NewArticleListViewModel(
             input: (
@@ -32,6 +29,11 @@ class NewArticleListViewController: UIViewController {
             .bindTo(tableView.rx.items(cellIdentifier: "ArticleListCell")) { _, article, cell in
                 cell.textLabel?.text = article.title
             }
+            .addDisposableTo(disposeBag)
+
+        viewModel.articles
+            .map { _ in false }
+            .bindTo(refreshControl.rx.isRefreshing)
             .addDisposableTo(disposeBag)
     }
 }

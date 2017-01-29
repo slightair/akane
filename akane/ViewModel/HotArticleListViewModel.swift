@@ -16,5 +16,6 @@ class HotArticleListViewModel {
             }
             .map { $0.elements }
             .startWith([])
+            .shareReplay(1)
     }
 }

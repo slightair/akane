@@ -50,6 +50,7 @@
 		579D0E051E3DCF010015C25A /* NewArticleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579D0E041E3DCF010015C25A /* NewArticleListViewController.swift */; };
 		579D0E071E3DCF320015C25A /* NewArticleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579D0E061E3DCF320015C25A /* NewArticleListViewModel.swift */; };
 		579D0E081E3DCF320015C25A /* NewArticleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579D0E061E3DCF320015C25A /* NewArticleListViewModel.swift */; };
+		579D0E0B1E3DD8810015C25A /* UIScrollView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579D0E0A1E3DD8810015C25A /* UIScrollView+Rx.swift */; };
 		57D8A6F81E2681A000CC120E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8A6F71E2681A000CC120E /* AppDelegate.swift */; };
 		57D8A6FF1E2681A000CC120E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57D8A6FD1E2681A000CC120E /* Main.storyboard */; };
 		57D8A7011E2681A000CC120E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57D8A7001E2681A000CC120E /* Assets.xcassets */; };
@@ -104,6 +105,7 @@
 		579D0E011E3DCE4D0015C25A /* NewArticleListRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewArticleListRequest.swift; sourceTree = "<group>"; };
 		579D0E041E3DCF010015C25A /* NewArticleListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewArticleListViewController.swift; sourceTree = "<group>"; };
 		579D0E061E3DCF320015C25A /* NewArticleListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewArticleListViewModel.swift; sourceTree = "<group>"; };
+		579D0E0A1E3DD8810015C25A /* UIScrollView+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Rx.swift"; sourceTree = "<group>"; };
 		57D8A6F41E2681A000CC120E /* akane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = akane.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57D8A6F71E2681A000CC120E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57D8A6FE1E2681A000CC120E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -185,6 +187,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		579D0E091E3DD83E0015C25A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				579D0E0A1E3DD8810015C25A /* UIScrollView+Rx.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		57D8A6EB1E2681A000CC120E = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +217,7 @@
 		57D8A6F61E2681A000CC120E /* akane */ = {
 			isa = PBXGroup;
 			children = (
+				579D0E091E3DD83E0015C25A /* Extension */,
 				57D8A71B1E27C93200CC120E /* Reddit */,
 				57D8A71A1E27C87300CC120E /* ViewController */,
 				57D8A7411E2A24CC00CC120E /* ViewModel */,
@@ -480,6 +491,7 @@
 				573BB5801E3C5CDF00A8BCD4 /* ListingResponse.swift in Sources */,
 				57D8A7201E27CACE00CC120E /* RedditUser.swift in Sources */,
 				573BB5741E3C540400A8BCD4 /* HotArticleListRequest.swift in Sources */,
+				579D0E0B1E3DD8810015C25A /* UIScrollView+Rx.swift in Sources */,
 				57D8A7261E290DDB00CC120E /* RedditDefaultAuthorization.swift in Sources */,
 				572A57C81E34E99500B577E8 /* RedditAuthorization.swift in Sources */,
 				579D0E071E3DCF320015C25A /* NewArticleListViewModel.swift in Sources */,
