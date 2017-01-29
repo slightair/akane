@@ -10,7 +10,9 @@ class HotArticleListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let viewModel = HotArticleListViewModel()
+        let refreshTrigger = rx.sentMessage(#selector(viewWillAppear)).map { _ in }
+
+        let viewModel = HotArticleListViewModel(refreshTrigger: refreshTrigger.asObservable())
 
         viewModel.articles
             .bindTo(tableView.rx.items(cellIdentifier: "ArticleListCell")) { _, article, cell in

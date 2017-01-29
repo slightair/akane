@@ -1,8 +1,8 @@
 import Foundation
+import APIKit
 import Himotoki
 
-struct ListingResponse: PaginationResponse {
+struct ListingResponse {
     let elements: [Article]
-    let page: Int
-    let nextPage: Int?
+    let requestKind: ListingRequestKind
 }

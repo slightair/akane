@@ -2,15 +2,17 @@ import Foundation
 import APIKit
 
 extension RedditAPI {
-    struct HotArticleListRequest: RedditAPIRequest, PaginationRequest {
+    struct HotArticleListRequest: RedditAPIRequest, ListingRequest {
         typealias Response = ListingResponse
 
         let method: HTTPMethod = .get
         let path: String = "/hot"
-        let page: Int
+        let requestKind: ListingRequestKind = .refresh
 
-        init(page: Int = 1) {
-            self.page = page
+        var queryParameters: [String: Any]? {
+            return [
+                "limit": 30,
+            ]
         }
     }
 }
