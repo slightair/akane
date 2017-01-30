@@ -7,12 +7,11 @@ class HotArticleListViewModel {
 
     init(
         refreshTrigger: Observable<Void>,
-        session: Session = Session.shared) {
+        client: ListingClient) {
 
         articles = refreshTrigger
             .flatMapLatest { _ -> Observable<ListingResponse> in
-                let request = RedditAPI.HotArticleListRequest()
-                return session.rx.response(request)
+                client.loadArticles(requestKind: .refresh)
             }
             .map { $0.elements }
             .startWith([])

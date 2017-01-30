@@ -17,7 +17,7 @@ class NewArticleListViewModel {
             loadBeforeTrigger: Observable<Void>,
             loadAfterTrigger: Observable<Void>
         ),
-        session: Session = Session.shared) {
+        client: ListingClient) {
 
         let requestTrigger: Observable<TriggerType> = Observable
             .of(
@@ -37,9 +37,7 @@ class NewArticleListViewModel {
                 } else {
                     requestKind = .refresh
                 }
-
-                let request = RedditAPI.NewArticleListRequest(requestKind: requestKind)
-                return session.rx.response(request)
+                return client.loadArticles(requestKind: requestKind)
             }
             .scan([]) { memo, response in
                 switch response.requestKind {

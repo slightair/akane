@@ -22,7 +22,8 @@ class NewArticleListViewController: UIViewController {
                 refreshTrigger: refreshTrigger.asObservable(),
                 loadBeforeTrigger: loadBeforeTrigger.asObservable(),
                 loadAfterTrigger: loadAfterTrigger.asObservable()
-            )
+            ),
+            client: NewArticleListClient()
         )
 
         viewModel.articles

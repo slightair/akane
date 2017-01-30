@@ -8,6 +8,33 @@ enum ListingRequestKind {
     case after(String)
 }
 
+func == (lhs: ListingRequestKind, rhs: ListingRequestKind) -> Bool {
+    return lhs.hashValue == rhs.hashValue
+}
+
+extension ListingRequestKind: Equatable {}
+
+extension ListingRequestKind: Hashable {
+    var hashValue: Int {
+        let type: Int
+        let associatedName: String
+
+        switch self {
+        case .refresh:
+            type = 1
+            associatedName = ""
+        case .before(let name):
+            type = 2
+            associatedName = name
+        case .after(let name):
+            type = 3
+            associatedName = name
+        }
+
+        return type.hashValue ^ associatedName.hashValue
+    }
+}
+
 protocol ListingRequest: Request {
     var requestKind: ListingRequestKind { get }
 }

@@ -12,3 +12,11 @@ extension Article: Decodable {
                            name: e <| ["data", "name"])
     }
 }
+
+func == (lhs: Article, rhs: Article) -> Bool {
+    return
+        lhs.title == rhs.title &&
+        lhs.name == rhs.name
+}
+
+extension Article: Equatable {}
