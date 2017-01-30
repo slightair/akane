@@ -19,8 +19,6 @@ class NewArticleListViewModelTest: XCTestCase {
             next(400, ()),
         ])
 
-        typealias ArticleList = [Article]
-
         let expectedArticlesEvents = [
             next(0, EquatableArray([])),
             next(200, EquatableArray([
