@@ -4,7 +4,7 @@ import RxSwift
 extension Reactive where Base: UIScrollView {
     var reachedBottom: Observable<Void> {
         return contentOffset
-            .flatMap { [weak base] contentOffset -> Observable<Void> in
+            .flatMap { [weak base] contentOffset -> Observable<CGFloat> in
                 guard let scrollView = base else {
                     return Observable.empty()
                 }
@@ -13,7 +13,9 @@ extension Reactive where Base: UIScrollView {
                 let y = contentOffset.y + scrollView.contentInset.top
                 let threshold = max(0.0, scrollView.contentSize.height - visibleHeight)
 
-                return y > threshold ? Observable.just() : Observable.empty()
+                return y > threshold ? Observable.just(scrollView.contentSize.height) : Observable.empty()
             }
+            .distinctUntilChanged()
+            .map { _ in }
     }
 }

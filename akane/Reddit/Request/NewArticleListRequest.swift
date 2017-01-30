@@ -11,7 +11,7 @@ extension RedditAPI {
 
         var queryParameters: [String: Any]? {
             var parameters: [String: Any] = [
-                "limit": 5,
+                "limit": 25,
             ]
 
             switch requestKind {
