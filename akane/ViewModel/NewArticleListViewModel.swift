@@ -39,14 +39,14 @@ class NewArticleListViewModel {
                 }
                 return client.loadArticles(requestKind: requestKind)
             }
-            .scan([]) { memo, response in
+            .scan([]) { articles, response in
                 switch response.requestKind {
                 case .refresh:
                     return response.elements
                 case .before:
-                    return response.elements + memo
+                    return response.elements + articles
                 case .after:
-                    return memo + response.elements
+                    return articles + response.elements
                 }
             }
             .do(onNext: { articles in
