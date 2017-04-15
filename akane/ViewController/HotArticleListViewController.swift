@@ -16,9 +16,9 @@ class HotArticleListViewController: UIViewController {
                                                 client: HotArticleListClient())
 
         viewModel.articles
-            .bindTo(tableView.rx.items(cellIdentifier: "ArticleListCell")) { _, article, cell in
+            .bind(to: tableView.rx.items(cellIdentifier: "ArticleListCell")) { _, article, cell in
                 cell.textLabel?.text = article.title
             }
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
 }

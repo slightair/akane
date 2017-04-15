@@ -27,14 +27,14 @@ class NewArticleListViewController: UIViewController {
         )
 
         viewModel.articles
-            .bindTo(tableView.rx.items(cellIdentifier: "ArticleListCell")) { _, article, cell in
+            .bind(to: tableView.rx.items(cellIdentifier: "ArticleListCell")) { _, article, cell in
                 cell.textLabel?.text = article.title
             }
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         viewModel.articles
             .map { _ in false }
-            .bindTo(refreshControl.rx.isRefreshing)
-            .addDisposableTo(disposeBag)
+            .bind(to: refreshControl.rx.isRefreshing)
+            .disposed(by: disposeBag)
     }
 }

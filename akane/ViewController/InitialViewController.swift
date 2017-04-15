@@ -30,32 +30,32 @@ class InitialViewController: UIViewController {
             .subscribe(onNext: { _ in
                 fetchUserTrigger.onNext(())
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         viewModel.needsLogin
             .map { !$0 }
-            .bindTo(loginButton.rx.isHidden)
-            .addDisposableTo(disposeBag)
+            .bind(to: loginButton.rx.isHidden)
+            .disposed(by: disposeBag)
 
         viewModel.needsAuthorize
             .subscribe(onNext: { url in
                 self.presentRedditAuthorization(url: url)
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         viewModel.retrievedCredential
             .subscribe(onNext: { _ in
                 fetchUserTrigger.onNext(())
                 self.currentWebViewController?.dismiss(animated: true, completion: nil)
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         viewModel.loggedIn
             .filter { $0 }
             .subscribe(onNext: { _ in
                 self.presentHomeView()
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
 
     func presentRedditAuthorization(url: URL) {
