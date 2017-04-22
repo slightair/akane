@@ -7,24 +7,26 @@ class MockRedditService: RedditService {
     private(set) var hasRefreshToken = false
     private(set) var hasUser = false
 
-    let userInfoSubject: Observable<RedditUser>
-    func fetchUserInfo() -> Observable<RedditUser> {
+    let userInfoSubject: Single<RedditUser>
+    func fetchUserInfo() -> Single<RedditUser> {
         if !hasRefreshToken {
-            return Observable.empty()
+            return .error(RedditServiceError.refreshTokenNotFound)
         }
         hasUser = true
         return userInfoSubject
     }
 
-    func refreshAccessToken() -> Observable<RedditCredential> {
-        return Observable.empty()
+    func refreshAccessToken() -> Single<RedditCredential> {
+        let credential = MockRedditAuthorization.testCredential
+        storeCredential(credential)
+        return .just(credential)
     }
 
     func storeCredential(_ credential: RedditCredential) {
         hasRefreshToken = true
     }
 
-    init(userInfoSubject: Observable<RedditUser>) {
+    init(userInfoSubject: Single<RedditUser>) {
         self.userInfoSubject = userInfoSubject
     }
 }

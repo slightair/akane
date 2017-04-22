@@ -2,12 +2,16 @@ import Foundation
 import RxSwift
 
 struct MockListingClient: ListingClient {
+    enum MockListingClientError: Error {
+        case mockResponseNotFound
+    }
+
     let responses: [ListingRequestKind: ListingResponse]
 
-    func loadArticles(requestKind: ListingRequestKind) -> Observable<ListingResponse> {
+    func loadArticles(requestKind: ListingRequestKind) -> Single<ListingResponse> {
         guard let response = responses[requestKind] else {
-            return Observable.empty()
+            return .error(MockListingClientError.mockResponseNotFound)
         }
-        return Observable.just(response)
+        return .just(response)
     }
 }

@@ -28,7 +28,7 @@ class NewArticleListViewModel {
             .merge()
 
         articles = requestTrigger
-            .flatMapLatest { type -> Observable<ListingResponse> in
+            .flatMapLatest { type -> Single<ListingResponse> in
                 let requestKind: ListingRequestKind
                 if type == .before, let firstArticleName = self.firstArticleName {
                     requestKind = .before(firstArticleName)

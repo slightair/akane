@@ -22,7 +22,7 @@ class InitialViewModelTest: XCTestCase {
 
         let userInfoSubject = scheduler.createHotObservable([
             next(600, MockRedditService.testUser),
-            completed(610),
+            completed(600),
         ])
 
         let expectedNeedsLoginEvents = [
@@ -44,7 +44,7 @@ class InitialViewModelTest: XCTestCase {
             next(600, true),
         ]
 
-        let mockRedditService = MockRedditService(userInfoSubject: userInfoSubject.asObservable())
+        let mockRedditService = MockRedditService(userInfoSubject: userInfoSubject.asSingle())
         let mockRedditAuthorization = MockRedditAuthorization(credentialSubject: credentialSubject.asObservable())
 
         let viewModel = InitialViewModel(

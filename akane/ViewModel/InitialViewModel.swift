@@ -18,8 +18,11 @@ final class InitialViewModel {
         )) {
 
         let userUpdated = input.fetchUserTrigger
-            .flatMapLatest { dependency.redditService.fetchUserInfo() }
-            .map { _ in }
+            .flatMapLatest {
+                dependency.redditService.fetchUserInfo()
+                    .map { _ in }
+                    .catchError { _ in .just() }
+            }
 
         let statusUpdated = Observable.of(input.fetchUserTrigger, userUpdated)
             .merge()

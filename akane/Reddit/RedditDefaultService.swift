@@ -37,9 +37,9 @@ class RedditDefaultService: RedditService {
         self.session = session
     }
 
-    func fetchUserInfo() -> Observable<RedditUser> {
+    func fetchUserInfo() -> Single<RedditUser> {
         if !hasRefreshToken {
-            return Observable.empty()
+            return .error(RedditServiceError.refreshTokenNotFound)
         }
 
         let request = RedditAPI.UserRequest()
@@ -50,7 +50,7 @@ class RedditDefaultService: RedditService {
             })
     }
 
-    func refreshAccessToken() -> Observable<RedditCredential> {
+    func refreshAccessToken() -> Single<RedditCredential> {
         guard let refreshToken = refreshToken else {
             fatalError("refresh token not found")
         }

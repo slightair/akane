@@ -10,7 +10,7 @@ class HotArticleListViewModel {
         client: ListingClient) {
 
         articles = refreshTrigger
-            .flatMapLatest { _ -> Observable<ListingResponse> in
+            .flatMapLatest { _ -> Single<ListingResponse> in
                 client.loadArticles(requestKind: .refresh)
             }
             .map { $0.elements }

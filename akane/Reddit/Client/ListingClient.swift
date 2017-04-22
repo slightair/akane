@@ -2,5 +2,5 @@ import Foundation
 import RxSwift
 
 protocol ListingClient {
-    func loadArticles(requestKind: ListingRequestKind) -> Observable<ListingResponse>
+    func loadArticles(requestKind: ListingRequestKind) -> Single<ListingResponse>
 }
