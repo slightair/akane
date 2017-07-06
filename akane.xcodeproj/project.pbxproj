@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		570A522F1E34FB2000563365 /* TestScheduler+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570A522E1E34FB2000563365 /* TestScheduler+Extensions.swift */; };
 		570A52331E35235B00563365 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570A52321E35235A00563365 /* RxBlocking.framework */; };
+		57291C6B1F0E7B66009B72AB /* InitialContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57291C6A1F0E7B66009B72AB /* InitialContract.swift */; };
+		57291C6D1F0E8153009B72AB /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57291C6C1F0E8153009B72AB /* InitialViewController.swift */; };
+		57291C6F1F0E817D009B72AB /* InitialInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57291C6E1F0E817D009B72AB /* InitialInteractor.swift */; };
+		57291C711F0E819D009B72AB /* InitialPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57291C701F0E819D009B72AB /* InitialPresenter.swift */; };
+		57291C731F0E81C5009B72AB /* InitialWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57291C721F0E81C5009B72AB /* InitialWireframe.swift */; };
+		57291C761F0E8E51009B72AB /* InitialViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57291C751F0E8E51009B72AB /* InitialViewBuilder.swift */; };
 		572A57A81E34E56000B577E8 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D8A74A1E2B2F3D00CC120E /* KeychainAccess.framework */; };
 		572A57A91E34E56000B577E8 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D8A7291E29E19800CC120E /* APIKit.framework */; };
 		572A57AA1E34E56000B577E8 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57D8A72A1E29E19800CC120E /* Result.framework */; };
@@ -85,6 +91,12 @@
 /* Begin PBXFileReference section */
 		570A522E1E34FB2000563365 /* TestScheduler+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TestScheduler+Extensions.swift"; sourceTree = "<group>"; };
 		570A52321E35235A00563365 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		57291C6A1F0E7B66009B72AB /* InitialContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialContract.swift; sourceTree = "<group>"; };
+		57291C6C1F0E8153009B72AB /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		57291C6E1F0E817D009B72AB /* InitialInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialInteractor.swift; sourceTree = "<group>"; };
+		57291C701F0E819D009B72AB /* InitialPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialPresenter.swift; sourceTree = "<group>"; };
+		57291C721F0E81C5009B72AB /* InitialWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialWireframe.swift; sourceTree = "<group>"; };
+		57291C751F0E8E51009B72AB /* InitialViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewBuilder.swift; sourceTree = "<group>"; };
 		572A57B01E34E5C400B577E8 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		572A57C41E34E97B00B577E8 /* RedditService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditService.swift; sourceTree = "<group>"; };
 		572A57C71E34E99500B577E8 /* RedditAuthorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditAuthorization.swift; sourceTree = "<group>"; };
@@ -160,6 +172,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57291C641F0E7A3B009B72AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				57291C6C1F0E8153009B72AB /* InitialViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		57291C651F0E7A42009B72AB /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				57291C6E1F0E817D009B72AB /* InitialInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		57291C661F0E7A4F009B72AB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				57291C701F0E819D009B72AB /* InitialPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		57291C671F0E7A57009B72AB /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		57291C681F0E7A5D009B72AB /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				57291C721F0E81C5009B72AB /* InitialWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		57291C691F0E7A63009B72AB /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				57291C6A1F0E7B66009B72AB /* InitialContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		57291C741F0E8E2E009B72AB /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				57291C751F0E8E51009B72AB /* InitialViewBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
 		579D0E091E3DD83E0015C25A /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +267,13 @@
 		57D8A6F61E2681A000CC120E /* akane */ = {
 			isa = PBXGroup;
 			children = (
+				57291C691F0E7A63009B72AB /* Contract */,
+				57291C741F0E8E2E009B72AB /* Builder */,
+				57291C681F0E7A5D009B72AB /* Wireframe */,
+				57291C671F0E7A57009B72AB /* Entity */,
+				57291C661F0E7A4F009B72AB /* Presenter */,
+				57291C651F0E7A42009B72AB /* Interactor */,
+				57291C641F0E7A3B009B72AB /* View */,
 				579D0E091E3DD83E0015C25A /* Extension */,
 				57D8A71B1E27C93200CC120E /* Reddit */,
 				57D8A6F71E2681A000CC120E /* AppDelegate.swift */,
@@ -451,18 +525,23 @@
 				579D0E211E3EFBB90015C25A /* HotArticleListClient.swift in Sources */,
 				573BB5801E3C5CDF00A8BCD4 /* ListingResponse.swift in Sources */,
 				57D8A7201E27CACE00CC120E /* RedditUser.swift in Sources */,
+				57291C711F0E819D009B72AB /* InitialPresenter.swift in Sources */,
 				573BB5741E3C540400A8BCD4 /* HotArticleListRequest.swift in Sources */,
 				579D0E0B1E3DD8810015C25A /* UIScrollView+Rx.swift in Sources */,
 				57D8A7261E290DDB00CC120E /* RedditDefaultAuthorization.swift in Sources */,
 				572A57C81E34E99500B577E8 /* RedditAuthorization.swift in Sources */,
+				57291C731F0E81C5009B72AB /* InitialWireframe.swift in Sources */,
 				57D8A7491E2B113C00CC120E /* UserRequest.swift in Sources */,
 				579D0E021E3DCE4D0015C25A /* NewArticleListRequest.swift in Sources */,
 				57D8A74D1E2B309B00CC120E /* Session+Extensions.swift in Sources */,
+				57291C761F0E8E51009B72AB /* InitialViewBuilder.swift in Sources */,
 				57D8A73C1E29F1F900CC120E /* RedditCredential.swift in Sources */,
 				57D8A7401E2A1E5500CC120E /* AccessTokenRequest.swift in Sources */,
 				579D0E1E1E3EFA7B0015C25A /* ListingClient.swift in Sources */,
 				57D8A6F81E2681A000CC120E /* AppDelegate.swift in Sources */,
 				57D8A7241E27D1BC00CC120E /* RedditServiceConfiguration.swift in Sources */,
+				57291C6D1F0E8153009B72AB /* InitialViewController.swift in Sources */,
+				57291C6B1F0E7B66009B72AB /* InitialContract.swift in Sources */,
 				573BB57A1E3C57B200A8BCD4 /* ListingRequest.swift in Sources */,
 				579D0E241E3EFD140015C25A /* NewArticleListClient.swift in Sources */,
 				573BB5771E3C543800A8BCD4 /* Article.swift in Sources */,
@@ -470,6 +549,7 @@
 				572A57C51E34E97B00B577E8 /* RedditService.swift in Sources */,
 				57D8A73A1E29F07200CC120E /* RedditAPI.swift in Sources */,
 				57D8A71E1E27C99400CC120E /* RedditDefaultService.swift in Sources */,
+				57291C6F1F0E817D009B72AB /* InitialInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
